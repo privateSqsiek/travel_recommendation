@@ -2,12 +2,11 @@
 <html lang="pl">
   <head>
     <meta charset="UTF-8" />
-    <title>Travel Recommendation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TravelBloom - Explore the World</title>
     <link rel="stylesheet" href="travel_recommendation.css" />
   </head>
-
-  <body>
-    <!-- NAVBAR -->
+  <body id="home">
     <nav class="navbar">
       <div class="brand">
         <span class="brand__logo">✈</span>
@@ -15,59 +14,46 @@
       </div>
 
       <div class="navlinks">
-        <a class="navlinks__link" href="#home">Home</a>
+        <a class="navlinks__link" href="travel_recommendation.html">Home</a>
         <a class="navlinks__link" href="nav_pages/about.html">About Us</a>
         <a class="navlinks__link" href="nav_pages/contact.html">Contact Us</a>
       </div>
 
       <div class="search">
         <input
-          class="search__input"
           type="text"
-          placeholder="Enter a destination or keyword"
+          id="conditionInput"
+          class="search__input"
+          placeholder="Enter keyword (e.g. beach, japan)"
         />
-        <button class="btn btn--primary" type="button">Search</button>
-        <button class="btn btn--ghost" type="button">Reset</button>
+        <button id="btnSearch" class="btn btn--primary">Search</button>
+        <button id="btnClear" class="btn btn--ghost">Clear</button>
       </div>
     </nav>
 
-    <!-- HOME / HERO SECTION -->
-    <main id="home">
-      <section class="hero">
-        <!-- Social icons (optional) -->
-        <aside class="social">
-          <a href="#">X</a>
-          <a href="#">f</a>
-          <a href="#">◎</a>
-          <a href="#">▶</a>
-        </aside>
+    <main class="hero">
+      <aside class="social">
+        <a href="#">X</a>
+        <a href="#">f</a>
+        <a href="#">◎</a>
+        <a href="#">▶</a>
+      </aside>
 
-        <!-- Intro content -->
+      <div class="container hero-layout">
         <div class="hero-content">
-          <h1>Explore. Dream. Discover.</h1>
+          <h1>EXPLORE DREAM DESTINATION</h1>
           <p>
-            Discover destinations, explore new cultures, and get inspired for
-            your next journey around the world.
+            Discover the most beautiful places on Earth. From turquoise beaches
+            to ancient temples and vibrant cities. Your next journey starts
+            here.
           </p>
-
-          <button class="btn btn--primary" type="button">Book Now</button>
+          <button class="btn btn--primary btn--large">Book Now</button>
         </div>
-      </section>
 
-      <!-- ABOUT SECTION -->
-      <section id="about" class="container">
-        <h2>About Us</h2>
-        <p>
-          TravelBloom helps you find travel inspiration and simple
-          recommendations based on your interests.
-        </p>
-      </section>
-
-      <!-- CONTACT SECTION -->
-      <section id="contact" class="container">
-        <h2>Contact Us</h2>
-        <p>Have questions? Reach us at <strong>contact@example.com</strong></p>
-      </section>
+        <div id="results" class="results-sidebar"></div>
+      </div>
     </main>
+
+    <script src="travel_recommendation.js"></script>
   </body>
 </html>
