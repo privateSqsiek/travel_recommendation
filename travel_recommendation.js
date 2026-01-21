@@ -5,42 +5,42 @@ const resultsContainer = document.getElementById('results');
 
 function searchCondition() {
     const input = conditionInput.value.toLowerCase().trim();
-    resultsContainer.innerHTML = ''; // Czyszczenie kontenera przed wyszukiwaniem
+    resultsContainer.innerHTML = ''; // Czyścimy wyniki przed nowym wyszukiwaniem
 
     if (!input) {
-        alert("Please enter a keyword!");
+        alert("Wpisz słowo kluczowe!");
         return;
     }
 
-    // Task 6: Pobieranie danych z pliku JSON
+    // Pobieranie danych z pliku JSON (Task 6)
     fetch('./travel_recommendation_api.json')
         .then(response => response.json())
         .then(data => {
-            console.log("Data fetched:", data); // Do sprawdzenia w konsoli
+            console.log("Pobrane dane:", data); // Logowanie do konsoli (Task 6)
 
             let foundResults = [];
 
-            // Task 7 & 8: Logika dopasowania słów kluczowych
+            // Obsługa słów kluczowych i wariacji (Task 7)
             if (input.includes('beach')) {
                 foundResults = data.beaches;
             } else if (input.includes('temple')) {
                 foundResults = data.temples;
             } else {
-                // Szukanie kraju
+                // Szukanie kraju (Task 8)
                 const country = data.countries.find(c => c.name.toLowerCase().includes(input));
                 if (country) {
                     foundResults = country.cities;
                 }
             }
 
-            // Task 8: Wyświetlanie wyników (obraz + opis + nazwa)
+            // Wyświetlanie wyników (Task 8)
             if (foundResults.length > 0) {
                 displayResults(foundResults);
             } else {
-                resultsContainer.innerHTML = '<p class="error-msg">No results found. Try "beach", "temple" or a country name.</p>';
+                resultsContainer.innerHTML = '<p class="error-msg">Nie znaleziono wyników. Spróbuj "beach", "temple" lub nazwę kraju.</p>';
             }
         })
-        .catch(error => console.error('Error:', error));
+        .catch(error => console.error('Błąd pobierania danych:', error));
 }
 
 function displayResults(locations) {
@@ -48,7 +48,6 @@ function displayResults(locations) {
         const card = document.createElement('div');
         card.classList.add('result-card');
 
-        // Tworzenie struktury karty zgodnie ze zrzutem ekranu
         card.innerHTML = `
             <img src="${place.imageUrl}" alt="${place.name}">
             <div class="result-card__content">
@@ -61,7 +60,7 @@ function displayResults(locations) {
     });
 }
 
-// Resetowanie wyszukiwarki
+// Funkcja Clear - resetuje pole i czyści wyniki
 btnClear.addEventListener('click', () => {
     conditionInput.value = '';
     resultsContainer.innerHTML = '';
